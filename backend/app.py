@@ -40,13 +40,12 @@ def delete_task(task_id):
     db.session.commit()
     return jsonify({'message': 'Task deleted successfully'})
 
-# Route to mark a task as completed
 @app.route('/tasks/<int:task_id>/complete', methods=['PUT'])
-def complete_task(task_id):
+def toggle_task_completion(task_id):
     task = Task.query.get_or_404(task_id)
-    task.completed = True
+    task.completed = not task.completed  # Toggle completion status
     db.session.commit()
-    return jsonify({'message': 'Task marked as completed'})
+    return jsonify({'message': 'Task completion status updated successfully'})
 
 if __name__ == '__main__':
     app.run(debug=True)

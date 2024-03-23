@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/AddTask.css'; // Import the CSS file
 
 const AddTask = ({ onAdd }) => {
   const [title, setTitle] = useState('');
@@ -13,21 +14,31 @@ const AddTask = ({ onAdd }) => {
   };
 
   return (
-    <div>
-      <h2>Add Task</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Description"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-        />
-        <button type="submit">Add Task</button>
+    <div className="add-task-container">
+      <h2>Add A New Task</h2>
+    <div/>
+      <form className="add-task-form" onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label htmlFor="title">Title:</label>
+          <input
+            className="add-task-input"
+            type="text"
+            id="title"
+            placeholder="Enter title"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+          <label htmlFor="description">Description:</label>
+          <input
+            className="add-task-input"
+            type="text"
+            id="description"
+            placeholder="Enter description"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+          />
+          <button className="add-task-button" type="submit">Add Task</button>
+        </div>
       </form>
     </div>
   );

@@ -1,0 +1,110 @@
+/* Task list container */
+.task-list-container {
+  margin-top: 20px;
+  background-color: #f5f5f5; /* Light gray background */
+  padding: 20px; /* Add padding */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+  
+  /* Task list */
+  .task-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Task item */
+  .task-item {
+    background-color: #fff; /* White background */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease; /* Smooth transition for box shadow */
+  }
+  
+  .task-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+  }
+  
+  /* Task details */
+  .task-details {
+    flex: 1;
+  }
+  
+  .task-details h3 {
+    margin: 0;
+    font-size: 1.4rem; /* Larger font size */
+    color: #333; /* Dark text color */
+  }
+  
+  .task-details p {
+    margin: 5px 0;
+    font-size: 1.1rem; /* Regular font size */
+    color: #666; /* Medium gray text color */
+  }
+  
+  /* Task actions */
+  .task-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Delete and complete buttons */
+  .delete-button,
+  .complete-button {
+    background-color: #dc3545; /* Danger color for delete button */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .delete-button:hover{
+    background-color: #c82333; /* Darker shade of red on hover */
+  }
+  
+  .complete-button {
+    background-color: #28a745; /* Success color for complete button */
+  }
+
+  .complete-button:hover{
+    background-color: #1d8335; /* Darker shade of green on hover */
+  }
+
+  /* Task tab container */
+.task-tab-container {
+  display: flex;
+  border-bottom: 1px solid #ccc; /* Add a border at the bottom to separate tabs */
+}
+
+/* Task tab */
+.task-tab {
+  padding: 10px 20px;
+  margin-right: 10px; /* Adjust the right margin to reduce space between tabs */
+  background-color: #e0e0e0; /* Default background color for tabs */
+  color: #333; /* Default text color */
+  border: none;
+  border-radius: 5px 5px 0 0; /* Rounded corners only on the top */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Remove right margin for the last tab */
+.task-tab:last-child {
+  margin-right: 0;
+}
+
+/* Active tab */
+.task-tab.active {
+  background-color: #fff; /* Background color when tab is active */
+  color: #000; /* Text color when tab is active */
+}
+

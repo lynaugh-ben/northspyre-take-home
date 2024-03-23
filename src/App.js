@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
 import AddTask from './components/AddTask';
-import DeleteTask from './components/DeleteTask';
-import MarkTaskCompleted from './components/MarkTaskCompleted';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -47,17 +45,21 @@ function App() {
     }
   };
 
-  const handleMarkCompleted = async (taskId) => {
+  const handleMarkCompleted = async (taskId, completed) => {
     try {
       const response = await fetch(`http://localhost:5000/tasks/${taskId}/complete`, {
         method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ completed: !completed }), // Toggle completion status
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to mark task as completed');
       }
-
-      fetchTasks();
+  
+      fetchTasks(); // Refetch tasks after updating completion status
     } catch (error) {
       console.error('Error marking task as completed:', error.message);
     }
@@ -77,10 +79,10 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Task Manager</h1>
-      <AddTask onAdd={handleAddTask} />
-      <TaskList tasks={tasks} onDelete={handleDeleteTask} onComplete={handleMarkCompleted} />
+    <div className="app-container">
+      <h1>NorthSpyre Task Manager</h1>
+      <AddTask onAdd={handleAddTask}/>
+      <TaskList tasks={tasks} onAdd={handleAddTask} onDelete={handleDeleteTask} onComplete={handleMarkCompleted} />
     </div>
   );
 }
